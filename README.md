@@ -1,81 +1,58 @@
-# Week6-KelasB-20240140009
+# LugnerKart - Katalog Produk & Pendaftaran Member (Tugas Fetch API & Form DOM / Event Handling)
 
-Proyek Praktikum **Pengembangan Aplikasi Web (PAW)** - Pertemuan 6  
-Repositori ini berisi implementasi aplikasi web **NusaMart**, platform e-commerce dan pendaftaran member interaktif berbasis HTML, CSS, dan JavaScript murni (Vanilla JS).
+Dua halaman statis (HTML + CSS + JavaScript native, tanpa library) yang dihubungkan lewat navigasi.
 
----
+## Tampilan Aplikasi
+## index.html
+<img width="960" height="540" alt="Cuplikan layar 2026-10-26 200838" src="https://github.com/user-attachments/assets/df68e378-d332-4e4b-9531-74cde622e727" />
+<img width="960" height="540" alt="Cuplikan layar 2026-10-26 200824" src="https://github.com/user-attachments/assets/c4767855-c539-47fa-8ea9-fa1591d41847" />
 
-## 📌 Identitas Proyek
+## form.html
+<img width="960" height="540" alt="Cuplikan layar 2026-10-26 200913" src="https://github.com/user-attachments/assets/0e7b3417-2d67-4eb3-ad58-cf8e93331722" />
+<img width="960" height="540" alt="Cuplikan layar 2026-10-26 201138" src="https://github.com/user-attachments/assets/6394905c-ec46-4266-b9d9-359d765b3393" />
 
-- **Nama Repositori**: `Week6-KelasB-20240140009`
-- **NIM**: 20240140009
-- **Kelas**: B
-- **Topik**: Manipulasi DOM, Asynchronous JavaScript (Fetch API), Event Handling, Validasi Formulir, dan Styling Modern.
 
----
+## Fitur
 
-## 🚀 Fitur Utama
+### 1. Katalog Produk (`index.html`) - Fetch API
+- Mengambil data dari `https://dummyjson.com/products` dengan `fetch()`.
+- Menampilkan nama, harga, kategori, dan gambar produk lewat DOM.
+- Status **loading** saat data diambil, pesan **error** + tombol "Coba lagi" bila gagal.
+- Cek `response.ok` agar status 404/500 juga dianggap error.
+- Pencarian produk (nama / kategori) memakai event `input`.
 
-### 1. Halaman Belanja / Katalog Produk (`index.html`)
-- **Integrasi REST API DummyJSON**: Mengambil data produk secara asinkronus menggunakan `fetch()` API.
-- **Rendering Dinamis**: Menampilkan kartu produk lengkap dengan gambar thumbnail, judul, kategori, deskripsi, harga terformat ($), dan rating bintang.
-- **Pencarian Real-Time**: Fitur pencarian instan berdasarkan nama produk atau kategori produk dengan update jumlah hasil pencarian secara langsung.
-- **State Loading & Penanganan Error**: Menampilkan indikator loading saat data diambil serta pesan error ramah pengguna dengan tombol "Coba lagi" jika terjadi kegagalan jaringan.
+### 2. Pendaftaran Member (`form.html`) - DOM & Event Handling
+- Kolom: nama, email, password, konfirmasi password, minat, persetujuan.
+- Event: `input`, `blur`, `change`, `click`, `submit`, `reset`.
+- Validasi langsung saat mengetik, pesan error muncul di bawah kolom.
+- Indikator kekuatan password, tombol tampilkan/sembunyikan password.
+- Hasil pendaftaran tampil dinamis sebagai kartu ringkasan.
 
-### 2. Halaman Formulir Pendaftaran Member (`form.html`)
-- **Validasi Input Client-Side Real-Time**:
-  - **Nama Lengkap**: Wajib diisi, minimal 3 karakter, dan hanya boleh mengandung huruf/spasi.
-  - **Email**: Format email tervalidasi menggunakan regex standar.
-  - **Password**: Wajib diisi, minimal 8 karakter, serta harus mengombinasikan huruf dan angka.
-  - **Konfirmasi Password**: Memastikan kecocokan data dengan kata sandi yang telah diisi.
-  - **Persetujuan Ketentuan**: Validasi checkbox persetujuan syarat dan ketentuan.
-- **Indikator Kekuatan Password (Password Strength Meter)**: Visualisasi bilah bar dinamis dan status level kekuatan password (Sangat Lemah, Cukup, Kuat, Sangat Kuat).
-- **Toggle Lihat Password**: Fitur menampilkan/menyembunyikan teks password secara interaktif.
-- **Kartu Ringkasan Pendaftaran**: Menampilkan data hasil registrasi dalam kartu profil ringkas setelah form berhasil divalidasi dan disubmit.
+| Kolom | Aturan |
+|---|---|
+| Nama | wajib, minimal 3 karakter, hanya huruf dan spasi |
+| Email | wajib, format email valid |
+| Password | wajib, minimal 8 karakter, mengandung huruf dan angka |
+| Konfirmasi | wajib, sama dengan password |
+| Persetujuan | wajib dicentang |
 
-### 3. Fitur Global & Aksesibilitas
-- **Dark Mode & Light Mode**: Switcher tema visual yang dapat beralih secara halus dan preferensi disimpan pada `localStorage` browser.
-- **Desain Responsif**: Tampilan optimal pada berbagai resolusi perangkat (Desktop, Tablet, dan Mobile).
-- **Semantik & Aksesibilitas**: Penggunaan elemen semantik HTML5, atribut `aria-live`, `aria-invalid`, serta navigasi ramah pembaca layar (screen reader).
+## Struktur Folder
 
----
-
-## 📁 Struktur Direktori
-
-```text
-Pertemuan6_PAW/
-├── assets/
-│   └── favicon.svg       # Ikon logo NusaMart
+```
+tugas-fetch-form/
+├── index.html
+├── form.html
 ├── css/
-│   ├── style.css         # Styling sistem desain utama & katalog produk
-│   ├── form.css          # Styling khusus formulir pendaftaran & indikator
-│   └── from.css          # File pendukung kompatibilitas styling formulir
+│   ├── style.css
+│   └── form.css
 ├── js/
-│   ├── theme.js          # Logika toggle dark/light mode & localStorage
-│   ├── products.js       # Integrasi fetch API DummyJSON, filter, & render produk
-│   ├── form.js           # Validasi input formulir, password strength & submit
-│   └── from.js           # File pendukung kompatibilitas logika formulir
-├── form.html             # Halaman antarmuka pendaftaran member
-├── index.html            # Halaman antarmuka katalog belanja produk
-└── README.md             # Dokumentasi lengkap proyek
+│   ├── products.js
+│   └── form.js
+├── assets/
+│   ├── favicon.svg
+└── README.md
 ```
 
----
+## Cara Menjalankan
 
-## 🛠️ Cara Menjalankan Proyek
-
-1. **Clone Repositori**:
-   ```bash
-   git clone https://github.com/Muhammadraihanfitzalrahman/Week6-KelasB-20240140009.git
-   ```
-2. **Masuk ke Direktori Proyek**:
-   ```bash
-   cd Week6-KelasB-20240140009
-   ```
-3. **Buka Menggunakan Browser atau Web Server Lokal**:
-   - Klik ganda berkas `index.html` untuk langsung membuka halaman di peramban web, **atau**
-   - Gunakan ekstensi **VS Code Live Server** / server statis lokal:
-     ```bash
-     npx serve .
-     ```
-   - Buka `http://localhost:3000` atau URL lokal yang disediakan.
+Buka `index.html` di browser. Halaman produk membutuhkan koneksi internet.
