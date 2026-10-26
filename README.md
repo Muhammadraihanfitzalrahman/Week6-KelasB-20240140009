@@ -1,4 +1,4 @@
-# LugnerKart - Katalog Produk & Pendaftaran Member (Tugas Fetch API & Form DOM / Event Handling)
+# NusaMart - Katalog Produk & Pendaftaran Member (Tugas Fetch API & Form DOM / Event Handling)
 
 Dua halaman statis (HTML + CSS + JavaScript native, tanpa library) yang dihubungkan lewat navigasi.
 
